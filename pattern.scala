@@ -5,8 +5,10 @@ case class Email(emailAddr: String, subject: String, body: String) extends Notif
 
 object test {
   def showNotification(notification : Notification): String = {
-    case Email(emailAddr,subject,_) => s"You recieved an Email from $emailAddr with subject = $subject"
-    case SMS(number,msg) => s"You recieved a message from $number with message = $msg"
+    notification match { 
+      case Email(emailAddr,subject,_) => s"You recieved an Email from $emailAddr with subject = $subject"
+      case SMS(number,msg) => s"You recieved a message from $number with message = $msg"
+    }
   }
   def main(agrs : Array[String]) : Unit = {
     val sms = SMS("3768346845","Hello")
